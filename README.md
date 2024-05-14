@@ -3,4 +3,4 @@ Inventory Management Website
 
 
 ### Branches naming convention
-name/component
+name/component-working-on
