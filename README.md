@@ -2,5 +2,5 @@
 Inventory Management Website
 
 ## Branches
-### Naming convention
-name/component
+  ### Naming convention
+  name/component
