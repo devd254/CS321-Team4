@@ -62,3 +62,10 @@ Make sure to pull from main and rebase your working branch regularly. IF YOU DON
 2) pull from origin/remote main branch
 3) checkout to your working branch
 4) rebase from main
+
+##### Running the webpage locally
+
+
+###### Navigate to cs321-project directory, then in terminal
+
+npm run dev
