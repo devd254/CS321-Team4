@@ -39,4 +39,15 @@ https://nodejs.org/dist/v20.13.1/node-v20.13.1.pkg
 
 Use github desktop app (not sure how it works in there)
 
-In location to install: git clone 
+In terminal:
+
+In location to clone repository: git clone https://github.com/devd254/CS321-Team4.git
+
+###### Install packages & dependencies (will only work with node.js installed)
+
+npm install
+
+###### Good to go!
+
+create you're branch and get started :D
+
