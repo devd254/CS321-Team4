@@ -44,10 +44,21 @@ In terminal:
 In location to clone repository: git clone https://github.com/devd254/CS321-Team4.git
 
 ##### Install packages & dependencies (will only work with node.js installed)
-
+###### Navigate to "cs321-project" directory
 npm install
 
 ##### Good to go!
 
 create you're branch and get started :D
 
+### Important Reminders
+
+When doing anything git related (pushing, pulling, etc.) ensure you are in the outermost directory (CS321-Team4). If in sub directories, certain changes you made might not be added/altered.
+
+Make sure to pull from main and rebase your working branch regularly. IF YOU DON'T MERGE CONFLICTS WILL ARISE
+##### How to rebase
+
+1) Checkout to main branch 
+2) pull from origin/remote main branch
+3) checkout to your working branch
+4) rebase from main
