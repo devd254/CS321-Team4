@@ -26,7 +26,7 @@ https://www.youtube.com/watch?v=2hR-uWjBAgw&pp=ygUSRmlyZWJhc2UgYW5kIHJlYWN0
 
 
 ### Installation/Set-up
-###### Download nodejs
+##### Download nodejs
 Windows x64
 
 https://nodejs.org/dist/v20.13.1/node-v20.13.1-x64.msi
@@ -35,7 +35,7 @@ MacOS x64
 
 https://nodejs.org/dist/v20.13.1/node-v20.13.1.pkg
 
-###### Clone repository
+##### Clone repository
 
 Use github desktop app (not sure how it works in there)
 
@@ -43,11 +43,11 @@ In terminal:
 
 In location to clone repository: git clone https://github.com/devd254/CS321-Team4.git
 
-###### Install packages & dependencies (will only work with node.js installed)
+##### Install packages & dependencies (will only work with node.js installed)
 
 npm install
 
-###### Good to go!
+##### Good to go!
 
 create you're branch and get started :D
 
