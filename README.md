@@ -25,4 +25,18 @@ https://www.youtube.com/watch?v=2hR-uWjBAgw&pp=ygUSRmlyZWJhc2UgYW5kIHJlYWN0
 [ShadCN](https://ui.shadcn.com/)
 
 
+### Installation/Set-up
+###### Download nodejs
+Windows x64
 
+https://nodejs.org/dist/v20.13.1/node-v20.13.1-x64.msi
+
+MacOS x64
+
+https://nodejs.org/dist/v20.13.1/node-v20.13.1.pkg
+
+###### Clone repository
+
+Use github desktop app (not sure how it works in there)
+
+In location to install: git clone 
