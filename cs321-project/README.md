@@ -10,6 +10,7 @@ name/component-working-on
 ##### Git
 https://www.youtube.com/watch?v=CvUiKWv2-C0&t=520s
 https://www.youtube.com/watch?v=SWYqp7iY_Tc&t=367s
+https://www.youtube.com/watch?v=8Dd7KRpKeaE
 ##### React
 https://www.youtube.com/watch?v=SqcY0GlETPk&pp=ygUOSW50cm8gdG8gUmVhY3Q%3D
 https://www.youtube.com/watch?v=s2skans2dP4&pp=ygUOSW50cm8gdG8gUmVhY3Q%3D
