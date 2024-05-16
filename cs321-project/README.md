@@ -1,10 +1,11 @@
 # CS321-Team4
 Inventory Management Website
 
-
+# ;)
 ### Branches naming convention
 name/component-working-on
 
+# change
 ### Resources
 ##### Git
 https://www.youtube.com/watch?v=CvUiKWv2-C0&t=520s
