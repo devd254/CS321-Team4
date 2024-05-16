@@ -1,7 +1,7 @@
 # CS321-Team4
 Inventory Management Website
 
-# :D
+# ;)
 ### Branches naming convention
 name/component-working-on
 
