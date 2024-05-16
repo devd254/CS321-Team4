@@ -6,6 +6,7 @@ Inventory Management Website
 name/component-working-on
 
 # change
+# change 2.0
 ### Resources
 ##### Git
 https://www.youtube.com/watch?v=CvUiKWv2-C0&t=520s
