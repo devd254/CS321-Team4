@@ -1,6 +1,7 @@
 # CS321-Team4
 Inventory Management Website
-
+# REMEMBER TO "npm install" WHENEVER PULLING OTHER PEOPLES CHANGES FROM MAIN
+When addig their changes people might of added certain components or libraries. Running this command after updating your main branch will make sure you aren't missing any new installations.
 # ;)
 ### Branches naming convention
 name/component-working-on
@@ -44,7 +45,7 @@ Use github desktop app (not sure how it works in there)
 In location to clone repository: git clone https://github.com/devd254/CS321-Team4.git
 
 ##### Install packages & dependencies (will only work with node.js installed)
-###### Navigate to "cs321-project" directory
+###### Navigate to "cs321-project" directory (whenever installing packages/libraries make sure you're in this directory)
 npm install
 
 ##### Good to go!
@@ -63,7 +64,6 @@ Make sure to pull from main and rebase your working branch regularly. IF YOU DON
 4) rebase from main
 
 ##### Running the webpage locally
-
 
 ###### Navigate to cs321-project directory, then in terminal
 
