@@ -45,7 +45,7 @@ Use github desktop app (not sure how it works in there)
 In location to clone repository: git clone https://github.com/devd254/CS321-Team4.git
 
 ##### Install packages & dependencies (will only work with node.js installed)
-###### Navigate to "cs321-project" directory
+###### Navigate to "cs321-project" directory (whenever installing packages/libraries make sure you're in this directory)
 npm install
 
 ##### Good to go!
