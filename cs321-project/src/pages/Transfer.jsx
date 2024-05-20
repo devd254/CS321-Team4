@@ -6,7 +6,9 @@ import TransferMenu from '../components/TransferMenu'
 const Transfer = () => {
   return (
     <div>
-      <TransferLoader />
+      <div className="loader-position">
+        <TransferLoader />
+      </div>
       <TransferMenu />
     </div>
   )
