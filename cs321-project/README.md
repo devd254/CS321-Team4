@@ -68,5 +68,3 @@ Make sure to pull from main and rebase your working branch regularly. IF YOU DON
 ###### Navigate to cs321-project directory, then in terminal
 
 npm run dev
-
-## npm install carbon-components-react carbon-components @carbon/icons-reacts
