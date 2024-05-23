@@ -37,7 +37,7 @@ const Management = () => {
   };
 
   return (
-    <div style={{ position: 'absolute', top: '20px', left: '215px', fontSize: '1.2rem' }}>
+    <div class="management">
       <DataTable
         rows={filteredItems}
         headers={[
