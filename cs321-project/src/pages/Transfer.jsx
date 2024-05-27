@@ -1,8 +1,18 @@
 import React from 'react'
 
+import TransferLoader from '../components/TransferLoader'
+import TransferMenu from '../components/TransferMenu'
+
 const Transfer = () => {
   return (
-    <div>Transfer</div>
+    <div>
+      <div className="loader-position">
+        <TransferLoader />
+      </div>
+      <div className="menu-position">
+        <TransferMenu />
+      </div>
+    </div>
   )
 }
 
