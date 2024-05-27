@@ -1,6 +1,5 @@
 import React from 'react'
 import { Search } from '@carbon/react';
-import '../index.css';
 import {
   DataTable,
   Table,

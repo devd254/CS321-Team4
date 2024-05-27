@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #be6363;
+  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -139,7 +139,6 @@ button:focus-visible {
   top: 1rem;
 }
 
-
 /* info box styling for dash */
 .info-boxes {
   padding-top: 20px;
@@ -164,10 +163,9 @@ button:focus-visible {
   margin-top: 50px; /* Default spacing for larger screens */
 }
 
-
 @media (prefers-color-scheme: light) {
   :root {
-    color: #3b5266;
+    color: #213547;
     background-color: #ffffff;
   }
   a:hover {
