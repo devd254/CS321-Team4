@@ -9,7 +9,9 @@ const Transfer = () => {
       <div className="loader-position">
         <TransferLoader />
       </div>
-      <TransferMenu />
+      <div className="menu-position">
+        <TransferMenu />
+      </div>
     </div>
   )
 }

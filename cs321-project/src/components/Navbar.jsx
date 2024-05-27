@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const Navbar = () => {
   return (
     <div className="navcontainer">
-      <p>
+      <p className="logo">
         SmarTrack
       </p>
       <nav className="navlinks">
