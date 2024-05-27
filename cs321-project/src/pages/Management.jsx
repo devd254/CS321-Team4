@@ -41,11 +41,10 @@ const Management = () => {
       <DataTable
         rows={filteredItems}
         headers={[
-          { header: 'Item Number', key: 'id' },
-          { header: 'Item Name', key: 'name' },
+          { header: 'Product ID', key: 'id' },
+          { header: 'Product Name', key: 'name' },
           { header: 'Warehouse', key: 'warehouse' },
           { header: 'Quantity', key: 'quantity' },
-          { header: 'Actions', key: 'actions' }, // Add a column for actions
         ]}
         render={({ rows, headers, getRowProps }) => (
           <TableContainer title="Management">
@@ -56,7 +55,7 @@ const Management = () => {
               <thead>
                 <tr>
                   {headers.map((header) => (
-                    <th key={header.key}>{header.header}</th>
+                    <th key={header.key} className="headerCell">{header.header}</th>
                   ))}
                 </tr>
               </thead>
@@ -64,12 +63,12 @@ const Management = () => {
                 {rows.map((row) => (
                   <tr {...getRowProps({ row })} key={row.id}>
                     {row.cells.map((cell) => (
-                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                      <TableCell key={cell.id} className='DataTableCell'>{cell.value}</TableCell>
                     ))}
                     <TableCell>
-                      <Button onClick={() => handleUpdate(row.id)}>Update</Button>
-                      <Button onClick={() => handleRestock(row.id)}>Restock</Button>
-                      <Button onClick={() => handleRemove(row.id)}>Remove</Button>
+                      <Button onClick={() => handleUpdate(row.id)} className="myButton">Update</Button>
+                      <Button onClick={() => handleRestock(row.id)} className="myButton">Restock</Button>
+                      <Button onClick={() => handleRemove(row.id)} className="myButton">Remove</Button>
                     </TableCell>
                   </tr>
                 ))}

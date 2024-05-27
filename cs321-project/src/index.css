@@ -159,4 +159,16 @@ button:focus-visible {
   top: 20px;
   left: 215px;
   font-size: 1.2rem;
+  color: #933e3e;
+}
+.DataTableCell {
+  width: 140px;
+  color: #933e3e;
+}
+.headerCell {
+  color:#933e3e;
+  font-weight: bold;
+}
+button {
+  background-color: #964646;
 }
