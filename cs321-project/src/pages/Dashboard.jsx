@@ -50,7 +50,7 @@ const SearchBar = () => {
       defaultValue=""
       id="search-playground-1"
       labelText="Search "
-      placeholder="Warehouse"
+      placeholder="Warehouse #"
       playgroundWidth={300}
       role="searchbox"
       size="md"
