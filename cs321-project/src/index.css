@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #be6363;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -140,9 +140,34 @@ button:focus-visible {
 }
 
 
+/* info box styling for dash */
+.info-boxes {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -500px;
+  
+}
+
+.info-box {
+  flex: 1;  /* Ensures each box takes equal space */
+  padding: 20px;
+  margin: 0 50px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  text-align: center;
+  background-color: #f9f9f9; /* Light background for the content */
+  color: #000000;
+}
+
+.activity-table {
+  margin-top: 50px; /* Default spacing for larger screens */
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #3b5266;
     background-color: #ffffff;
   }
   a:hover {
