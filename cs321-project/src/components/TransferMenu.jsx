@@ -6,26 +6,32 @@ import {
   Button,
   Form,
 } from 'carbon-components-react'
-
-const transfer = (e) => {
-  e.preventDefault();
-  console.log("Do db stuff");
-
-  // Create a FormData object from the form element
-  const formData = new FormData(e.target);
-
-  // Retrieve the data from the TextInput fields using their IDs
-  const productId = formData.get('id');
-  const quantity = formData.get('q');
-
-  console.log(`Product ID: ${productId}`);
-  console.log(`Quantity: ${quantity}`);
-
-  //Make the truck deliver animation
-  console.log("Truck deliver");
-};
+import { useState } from 'react';
 
 const TransferMenu = () => {
+  const [dbTest, dbTestChange] = useState(false);
+  const [formTest, formTestChange] = useState(false);
+  const transfer = (e) => {
+    e.preventDefault();
+    console.log("Do db stuff");
+  
+    // Create a FormData object from the form element
+    const formData = new FormData(e.target);
+  
+    // Retrieve the data from the TextInput fields using their IDs
+    const productId = formData.get('id');
+    const quantity = formData.get('q');
+    //Change state if prodId and quantity changed
+  
+    console.log(`Product ID: ${productId}`);
+    console.log(`Quantity: ${quantity}`);
+    
+    //Change state if db values changed
+
+    //Make the truck deliver animation
+    console.log("Truck deliver");
+  };
+
   return (
     <div className="menu-container">
       <Form onSubmit={transfer} >
