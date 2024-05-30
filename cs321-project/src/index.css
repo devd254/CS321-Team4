@@ -161,6 +161,7 @@ button:focus-visible {
 
 .activity-table {
   margin-top: 50px; /* Default spacing for larger screens */
+  position: absolute
 }
 
 @media (prefers-color-scheme: light) {
