@@ -4,9 +4,11 @@ import 'carbon-components/css/carbon-components.min.css';
 
 //sample items
 const initialItems = [
-  { id: '1', name: 'Item 1', warehouse: '101', quantity: 10 },
-  { id: '2', name: 'Item 2', warehouse: '102', quantity: 20 },
-  { id: '3', name: 'Item 3', warehouse: '103', quantity: 15 },
+  { id: '1', name: 'Item 1', warehouse: '101', quantity: 10, price: '$10'},
+  { id: '2', name: 'Item 2', warehouse: '102', quantity: 20, price: '$20'},
+  { id: '3', name: 'Item 3', warehouse: '103', quantity: 15, price: '$15'},
+  { id: '4', name: 'Item 4', warehouse: '104', quantity: 25, price: '$25'},
+  { id: '5', name: 'Item 5', warehouse: '105', quantity: 30, price: '$30'}
 ];
 
 const Management = () => {
@@ -45,6 +47,7 @@ const Management = () => {
           { header: 'Product Name', key: 'name' },
           { header: 'Warehouse', key: 'warehouse' },
           { header: 'Quantity', key: 'quantity' },
+          { header: 'Price', key: 'price' },
         ]}
         render={({ rows, headers, getRowProps }) => (
           <TableContainer title="Management">
