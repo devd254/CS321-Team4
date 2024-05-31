@@ -9,8 +9,10 @@ import {
 import { useState } from 'react';
 
 const TransferMenu = () => {
-  const [dbTest, dbTestChange] = useState(false);
-  const [formTest, formTestChange] = useState(false);
+  const [dbTestNew, dbTestChanged] = useState("");
+  const [dbTestPrev, dbTestBefore] = useState("");
+  const [prodTest, prodTestChange] = useState("");
+  const [quantityTest, quantityTestChange] = useState("");
   const transfer = (e) => {
     e.preventDefault();
     console.log("Do db stuff");
@@ -22,12 +24,15 @@ const TransferMenu = () => {
     const productId = formData.get('id');
     const quantity = formData.get('q');
     //Change state if prodId and quantity changed
+    prodTestChange(productId);
+    quantityTestChange(quantity);
   
     console.log(`Product ID: ${productId}`);
     console.log(`Quantity: ${quantity}`);
     
     //Change state if db values changed
-
+    dbTestBefore("previous database value");
+    dbTestChanged("new database value");
     //Make the truck deliver animation
     console.log("Truck deliver");
   };
