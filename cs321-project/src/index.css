@@ -121,10 +121,11 @@ button:focus-visible {
 .menu-container {
   width: 100%;
   height: 100%;
+  color: #933e3e;
 }
 .menu-position {
   position: fixed;
-  top: 35rem;
+  top: 25rem;
   height: 30%;
   width: 20%;
 }
