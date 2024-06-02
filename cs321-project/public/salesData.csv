@@ -1,0 +1,13 @@
+date,orderId,warehouse,itemId,quantitySold,unitPrice,totalPrice
+2023-01-01,1,Warehouse A,A123,10,5,50
+2023-01-03,4,Warehouse A,A123,12,5,60
+2023-01-04,6,Warehouse A,hrth6rh,12,5,70
+2023-01-05,7,Warehouse A,hrthrth,12,5,80
+2023-01-01,1,Warehouse B,B123,1,5,60
+2023-01-03,4,Warehouse B,B124,1,6,70
+2023-01-04,6,Warehouse B,B125,1,7,80
+2023-01-05,7,Warehouse B,B126,1,8,90
+2023-01-06,7,Warehouse B,B126,1,8,90
+2023-01-07,7,Warehouse B,B126,1,8,90
+2023-01-08,7,Warehouse B,B126,1,8,90
+2023-01-09,7,Warehouse B,B126,1,8,90
