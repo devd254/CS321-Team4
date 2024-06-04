@@ -6,26 +6,37 @@ import {
   Button,
   Form,
 } from 'carbon-components-react'
-
-const transfer = (e) => {
-  e.preventDefault();
-  console.log("Do db stuff");
-
-  // Create a FormData object from the form element
-  const formData = new FormData(e.target);
-
-  // Retrieve the data from the TextInput fields using their IDs
-  const productId = formData.get('id');
-  const quantity = formData.get('q');
-
-  console.log(`Product ID: ${productId}`);
-  console.log(`Quantity: ${quantity}`);
-
-  //Make the truck deliver animation
-  console.log("Truck deliver");
-};
+import { useState } from 'react';
 
 const TransferMenu = () => {
+  const [dbTestNew, dbTestChanged] = useState("");
+  const [dbTestPrev, dbTestBefore] = useState("");
+  const [prodTest, prodTestChange] = useState("");
+  const [quantityTest, quantityTestChange] = useState("");
+  const transfer = (e) => {
+    e.preventDefault();
+    console.log("Do db stuff");
+  
+    // Create a FormData object from the form element
+    const formData = new FormData(e.target);
+  
+    // Retrieve the data from the TextInput fields using their IDs
+    const productId = formData.get('id');
+    const quantity = formData.get('q');
+    //Change state if prodId and quantity changed
+    prodTestChange(productId);
+    quantityTestChange(quantity);
+  
+    console.log(`Product ID: ${productId}`);
+    console.log(`Quantity: ${quantity}`);
+    
+    //Change state if db values changed
+    dbTestBefore("previous database value");
+    dbTestChanged("new database value");
+    //Make the truck deliver animation
+    console.log("Truck deliver");
+  };
+
   return (
     <div className="menu-container">
       <Form onSubmit={transfer} >
