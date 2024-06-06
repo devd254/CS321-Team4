@@ -121,10 +121,11 @@ button:focus-visible {
 .menu-container {
   width: 100%;
   height: 100%;
+  color: #933e3e;
 }
 .menu-position {
   position: fixed;
-  top: 35rem;
+  top: 25rem;
   height: 30%;
   width: 20%;
 }
@@ -171,4 +172,127 @@ button:focus-visible {
 }
 button {
   background-color: #964646;
+}
+.add{
+  background-color: #f0e9ca;
+  position:absolute;
+  top:0;
+  left: 200px;
+  right:0;
+  bottom:0;
+}
+.text_1 {
+  position: absolute;
+  top: 40px; 
+  left: 30px; 
+  right: 400px;
+  bottom: 50px; 
+  background-color: #FBEAEB;
+  margin-right: 10%;
+  padding-top: 30px;
+  border-radius: 30px 30px 30px 30px;
+  border: 4px solid black;
+}
+.text{
+  font-weight: bold;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.input{
+  display:flex;
+  width: 100%;
+}
+.input-label{
+  font-size: 20px;
+  margin-left: 30px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+.text-input{
+  margin-left: -7px;
+  width: 350px;
+}
+.number-input{
+  margin-left: 50px;
+  width: 500;
+  margin-bottom: 25px;
+  margin-right: 300px;
+  display:flex;
+  margin-left: 47px;
+  .dollar{
+    font-size: 18px;
+    margin-top:2px;
+  }
+}
+.count-input{
+  margin-left: 50px;
+  width: 500px;
+  margin-bottom: 25px;
+  margin-right: 350px;
+  margin-left: 49px;
+}
+.input{
+  margin-top: 2px;
+}
+.location{
+  margin-left: 25px;
+  margin-bottom: 20px;
+  border-color: black;
+}
+.size{
+  margin-left: 66px;
+  margin-bottom: 20px;
+}
+.brand-name{
+  margin-left: 48px;
+  width: 350px;
+}
+.type{
+  margin-left: 58px;
+}
+.description{
+  margin-left: 48px;
+  width: 350px;
+}
+.button{
+  font-size: 20px;
+  color: black;
+}
+.text_2 {
+  position: absolute;
+  top: 40px; 
+  left: 600px; 
+  right: 60px;
+  bottom: 345px; 
+  background-color: #FBEAEB;
+  padding-top: 30px;
+  border-radius: 30px 30px 30px 30px;
+  border: 4px solid black;
+}
+.text2{
+  font-weight: bold;
+  font-size: 20px;
+}
+.type-option{
+  position: absolute;
+  top: 350px; 
+  left: 600px; 
+  right: 60px;
+  bottom: 50px; 
+  background-color: #FBEAEB;
+  padding-top: 30px;
+  border-radius: 30px 30px 30px 30px;
+  border: 4px solid black;
+}
+.type-option-style{
+  font-weight: bold;
+  font-size: 20px;
+}
+.warehouse-loc{
+  width: 250px;
+  margin-left: 80px;
+  margin-top: 45px;
+}
+.warehouse-button{
+  margin-top: 35px;
 }
