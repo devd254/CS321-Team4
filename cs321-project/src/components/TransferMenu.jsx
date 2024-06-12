@@ -13,10 +13,14 @@ const TransferMenu = ( {truckAnimation} ) => {
   const [dbTestPrev, dbTestBefore] = useState("");
   const [prodTest, prodTestChange] = useState("");
   const [quantityTest, quantityTestChange] = useState("");
-  const transfer = (e) => {
+
+  const getPreviousValues = () => {
+    
+  }
+
+  const handleTransfer = (e) => {
     e.preventDefault();
     console.log("Do db stuff");
-  
     // Create a FormData object from the form element
     const formData = new FormData(e.target);
   
@@ -40,7 +44,7 @@ const TransferMenu = ( {truckAnimation} ) => {
 
   return (
     <div className="menu-container">
-      <Form onSubmit={transfer} >
+      <Form onSubmit={handleTransfer} >
           <Select id="w-from" defaultValue="placeholder-item" labelText="From">
             <SelectItem disabled hidden value="placeholder-item" text="Choose a warehouse" />
             <SelectItem value="option-1" text="Warehouse 1" />
