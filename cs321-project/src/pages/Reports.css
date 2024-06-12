@@ -9,19 +9,21 @@
 }
 
 .chart-container {
-    width: 160%;
+    width: 130%; 
     height: 500px;
     background-color: rgb(245, 239, 212);
     border: 2px solid #212125;
     padding: 0.5px;
     margin-bottom: 20px;
+    margin-right: -28%;
 }
 
 .table-container {
-    width: 160%;
+    width: 130%;
     background-color: rgb(245, 239, 212);
     border: 2px solid #212125;
     padding: 20px;
+    margin-right: -28%;
 }
 
 .table {
