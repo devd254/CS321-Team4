@@ -8,7 +8,7 @@ import {
 } from 'carbon-components-react'
 import { useState } from 'react';
 
-const TransferMenu = () => {
+const TransferMenu = ( {truckAnimation} ) => {
   const [dbTestNew, dbTestChanged] = useState("");
   const [dbTestPrev, dbTestBefore] = useState("");
   const [prodTest, prodTestChange] = useState("");
@@ -34,7 +34,8 @@ const TransferMenu = () => {
     dbTestBefore("previous database value");
     dbTestChanged("new database value");
     //Make the truck deliver animation
-    console.log("Truck deliver");
+    console.log("Truck delivering");
+    truckAnimation();
   };
 
   return (
