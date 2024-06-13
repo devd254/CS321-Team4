@@ -213,7 +213,7 @@ button {
   background-color: #964646;
   font: 0.95rem Arial;
 }
-
+/*Add Page Styling*/
 .add{
   background-color: #f0e9ca;
   position:absolute;
@@ -270,7 +270,7 @@ button {
   width: 500px;
   margin-bottom: 25px;
   margin-right: 350px;
-  margin-left: 49px;
+  margin-left: 25px;
 }
 .input{
   margin-top: 2px;
@@ -289,10 +289,10 @@ button {
   width: 350px;
 }
 .type{
-  margin-left: 58px;
+  margin-left: 59px;
 }
 .description{
-  margin-left: 48px;
+  margin-left: 58px;
   width: 350px;
 }
 .button{
