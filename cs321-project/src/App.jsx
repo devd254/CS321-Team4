@@ -26,10 +26,10 @@ import Reports from './pages/Reports'
 //   messagingSenderId: "962075931184",
 //   appId: "1:962075931184:web:2df37385a444bc7c5e73f5",
 //   measurementId: "G-6DF1PBCBTN",
-//   databaseURL: "https://DATABASE_NAME.REGION.firebasedatabase.app"
+//   databaseURL: "https://cs321-54da7-default-rtdb.firebaseio.com"
 // };
 
-// Initialize Firebase
+// // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 // const database = getDatabase(app);
@@ -38,12 +38,12 @@ import Reports from './pages/Reports'
  More Documentation for database stuff here (MUST READ)
  https://firebase.google.com/docs/database/web/read-and-write?authuser=0&hl=en#web
 */
-// async function sendData (warehouseNumber, productId, price, quantity, size, brand, type, description) {
+// async function sendData (warehouseNumber, productName, productId, price, quantity, size, brand, type, description) {
 //   try{
 //     console.log("Initilization and database received");
-    
 //     set(ref(database, 'warehouse/' + warehouseNumber), {
 //       productId: productId,
+//       productName: productName,
 //       price: price,
 //       quantity: quantity,
 //       size: size,
@@ -75,7 +75,7 @@ import Reports from './pages/Reports'
 
 function App() {
   // useEffect(() => {
-  //   sendData("1", "1", "10", "30", "small", "Gucci", "Consumer", "This bag is so cool this is a description");
+  //   sendData("2", "High Performance Shoe", "5", "20", "15", "medium", "Nike", "Sporting Goods", "This shoe is designed for high performance");
   //   getData("1");
   // }, []);
   return (
