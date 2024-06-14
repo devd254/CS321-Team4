@@ -7,7 +7,7 @@ import './../App.css';
 
 
 
-const firebaseConfig = {
+/*const firebaseConfig = {
   apiKey: "AIzaSyDl5QW8q32mb73NIZ4bsdbvxWhTsOVsqAY",
   authDomain: "cs321-54da7.firebaseapp.com",
   projectId: "cs321-54da7",
@@ -27,7 +27,7 @@ const database = getDatabase(app);
  More Documentation for database stuff here (MUST READ)
  https://firebase.google.com/docs/database/web/read-and-write?authuser=0&hl=en#web
 */
-async function sendData (warehouseNumber, productId, price, quantity, size, brand, type, description) {
+/*async function sendData (warehouseNumber, productId, price, quantity, size, brand, type, description) {
   try{
     console.log("Initilization and database received");
    
@@ -46,7 +46,7 @@ async function sendData (warehouseNumber, productId, price, quantity, size, bran
   catch(error){
     console.log(error);
   }
-}
+}*/
 
 /*async function getData (warehouseNumber) {
   const dbRef = ref(database);
