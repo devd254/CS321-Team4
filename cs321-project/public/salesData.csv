@@ -11,3 +11,4 @@ date,orderId,warehouse,itemId,quantitySold,unitPrice,totalPrice
 2023-01-07,7,Warehouse B,B126,1,8,90
 2023-01-08,7,Warehouse B,B126,1,8,90
 2023-01-09,7,Warehouse B,B126,1,8,90
+2023-01-09,7,Warehouse C,B126,1,8,1000

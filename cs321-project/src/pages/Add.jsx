@@ -71,16 +71,20 @@ const Add = () => {
   const [type, setType] = useState('');
   const [description, setDescription] = useState('');
   const handleTextInput = (e) =>{
-    setName(e.target.value);
-    console.log('ID:', e.target.value);
+    let replace =(e.target.value).replace(/\d/, '');
+    setName(replace);
+    console.log('ID:', replace);
   }
   const handlePriceInput = (e) =>{
-    setPrice(e.target.value);
-    console.log('Price:', e.target.value);
+    let replace =(e.target.value).replace(/\d/, '');
+    setPrice(replace);
+    console.log('ID:', replace);
 
   }
   const handleQuantityInput = (e) => {
-    setCount(e.target.value);
+    let replace =(e.target.value).replace(/\d/, '');
+    setCount(replace);
+    console.log('ID:', replace);
   }
   const handleWareHouseInput = (e) =>{
     setWareHouse(e.target.value);
@@ -93,7 +97,7 @@ const Add = () => {
   }
   const handleTypeInput = (e) =>{
     setType(e.target.value);
-    console.log('Type:', e.target.value);
+  
   }
   const handleDescriptionInput = (e) =>{
     setDescription(e.target.value);
