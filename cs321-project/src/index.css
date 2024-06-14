@@ -162,11 +162,11 @@ button:focus-visible {
   position: absolute;
   top: 20px;
   left: 215px;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   color: #933e3e;
 }
 .DataTableCell {
-  width: 140px;
+  width: 100px;
   color: #933e3e;
 }
 .headerCell {

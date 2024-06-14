@@ -198,6 +198,7 @@ const TransferMenu = ({truckAnimation}) => {
       
       set(ref(database, 'warehouse/' + warehouseNumber), {
         productId: productId,
+        productName: productName,
         price: price,
         quantity: quantity,
         size: size,
@@ -227,25 +228,26 @@ const TransferMenu = ({truckAnimation}) => {
   const transfer = (e) => {
     e.preventDefault();
     console.log("Do db stuff");
-    // sendData("2", "5", "20", "15", "medium", "Nike", "Sporting Goods", "This shoe is designed for high performance");
-    // sendData("3", "8", "30", "50", "large", "Adidas", "Clothing", "These pants are made from organic cotton");
-    // sendData("4", "12", "40", "25", "extra large", "Sony", "Electronics", "This is the latest model of the Sony headphones");
-    // sendData("5", "20", "50", "10", "small", "Samsung", "Appliances", "This microwave oven has a modern design");
-    // sendData("6", "25", "60", "5", "medium", "Apple", "Technology", "This iPhone features the latest innovations");
-    // sendData("7", "30", "70", "40", "large", "Lego", "Toys", "This Lego set includes various unique pieces");
-    // sendData("8", "35", "80", "20", "extra large", "Honda", "Automotive", "This is the latest model of the Honda Civic");
-    // sendData("9", "40", "90", "35", "small", "Coca-Cola", "Beverages", "This is a limited edition Coca-Cola bottle");
-    // sendData("10", "45", "100", "60", "medium", "Nestle", "Food", "This chocolate bar is made with premium ingredients");
-    // sendData("11", "50", "110", "70", "large", "Puma", "Footwear", "These sneakers are designed for comfort and style");
-    // sendData("12", "55", "120", "80", "extra large", "Bosch", "Tools", "This drill is perfect for professional use");
-    // sendData("13", "60", "130", "90", "small", "HP", "Computers", "This laptop is equipped with the latest technology");
-    // sendData("14", "65", "140", "100", "medium", "Dell", "Computers", "This desktop computer offers great performance");
-    // sendData("15", "70", "150", "110", "large", "Canon", "Cameras", "This camera features high resolution and durability");
-    // sendData("16", "75", "160", "120", "extra large", "Sony", "Gaming", "This PlayStation offers an immersive gaming experience");
-    // sendData("17", "80", "170", "130", "small", "Samsung", "Mobile Phones", "This smartphone has a sleek design and powerful features");
-    // sendData("18", "85", "180", "140", "medium", "LG", "Home Appliances", "This refrigerator is energy efficient and spacious");
-    // sendData("19", "90", "190", "150", "large", "Bose", "Audio", "These speakers provide high-quality sound");
-    // sendData("20", "95", "200", "160", "extra large", "Dyson", "Home Appliances", "This vacuum cleaner is highly effective and easy to use");
+    // sendData("2", "High Performance Shoe", "5", "20", "15", "medium", "Nike", "Sporting Goods", "This shoe is designed for high performance");
+    // sendData("3", "Organic Cotton Pants", "8", "30", "50", "large", "Adidas", "Clothing", "These pants are made from organic cotton");
+    // sendData("4", "Latest Sony Headphones", "12", "40", "25", "extra large", "Sony", "Electronics", "This is the latest model of the Sony headphones");
+    // sendData("5", "Modern Microwave Oven", "20", "50", "10", "small", "Samsung", "Appliances", "This microwave oven has a modern design");
+    // sendData("6", "Innovative iPhone", "25", "60", "5", "medium", "Apple", "Technology", "This iPhone features the latest innovations");
+    // sendData("7", "Unique Lego Set", "30", "70", "40", "large", "Lego", "Toys", "This Lego set includes various unique pieces");
+    // sendData("8", "Latest Honda Civic", "35", "80", "20", "extra large", "Honda", "Automotive", "This is the latest model of the Honda Civic");
+    // sendData("9", "Limited Edition Coca-Cola", "40", "90", "35", "small", "Coca-Cola", "Beverages", "This is a limited edition Coca-Cola bottle");
+    // sendData("10", "Premium Chocolate Bar", "45", "100", "60", "medium", "Nestle", "Food", "This chocolate bar is made with premium ingredients");
+    // sendData("11", "Comfort Sneakers", "50", "110", "70", "large", "Puma", "Footwear", "These sneakers are designed for comfort and style");
+    // sendData("12", "Professional Drill", "55", "120", "80", "extra large", "Bosch", "Tools", "This drill is perfect for professional use");
+    // sendData("13", "Latest Technology Laptop", "60", "130", "90", "small", "HP", "Computers", "This laptop is equipped with the latest technology");
+    // sendData("14", "High Performance Desktop", "65", "140", "100", "medium", "Dell", "Computers", "This desktop computer offers great performance");
+    // sendData("15", "High Resolution Camera", "70", "150", "110", "large", "Canon", "Cameras", "This camera features high resolution and durability");
+    // sendData("16", "Immersive PlayStation", "75", "160", "120", "extra large", "Sony", "Gaming", "This PlayStation offers an immersive gaming experience");
+    // sendData("17", "Sleek Smartphone", "80", "170", "130", "small", "Samsung", "Mobile Phones", "This smartphone has a sleek design and powerful features");
+    // sendData("18", "Energy Efficient Refrigerator", "85", "180", "140", "medium", "LG", "Home Appliances", "This refrigerator is energy efficient and spacious");
+    // sendData("19", "High-Quality Speakers", "90", "190", "150", "large", "Bose", "Audio", "These speakers provide high-quality sound");
+    // sendData("20", "Effective Vacuum Cleaner", "95", "200", "160", "extra large", "Dyson", "Home Appliances", "This vacuum cleaner is highly effective and easy to use");
+    
 
     getAllWarehouseData();
     //Connect to database and store previous values
