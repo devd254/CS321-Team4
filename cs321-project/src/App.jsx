@@ -43,7 +43,6 @@ import Reports from './pages/Reports'
 //     console.log("Initilization and database received");
     
 //     set(ref(database, 'warehouse/' + warehouseNumber), {
-//       warehouseNumber: warehouseNumber,
 //       productId: productId,
 //       price: price,
 //       quantity: quantity,
