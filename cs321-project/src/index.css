@@ -143,6 +143,42 @@ button:focus-visible {
   top: 1rem;
 }
 
+/* info box styling for dash */
+.info-boxes {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -500px;
+
+}
+
+.info-box {
+  flex: 1;  /* Ensures each box takes equal space */
+  padding: 20px;
+  margin: 0 50px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  border: 4px solid black;
+  text-align: justify;
+  background-color: #933e3e; /* Light background for the content */
+  color: #ffffff;
+  width: 300px;  /* Set the width of the info box */
+  height: 200px; /* Set the height of the info box */
+  font-size: 40px;
+  flex-direction: column;
+}
+
+.activity-table {
+  margin-top: 50px; /* Default spacing for larger screens */
+  position: absolute
+}
+.bottom-text {
+  position: absolute;  /* Set the text to absolute positioning */
+  font-size: 25px;;
+  text-align: justify; /* Center the text horizontally */
+  left:auto;
+  bottom: 1000px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
