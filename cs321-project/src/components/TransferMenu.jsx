@@ -135,29 +135,6 @@ const TransferMenu = ({truckAnimation}) => {
     }
   }
 
-  useEffect(() => {
-    if (productValue !== "" || quantityValue !== "" || warehouseFromValue !== "" || warehouseToValue !== "") {
-      productInputTest();
-      quantityInputTest();
-      warehouseFromInputTest();
-      warehouseToInputTest();
-    }
-  }, [productValue, quantityValue, warehouseFromValue, warehouseToValue]);
-
-  /*
-  * Handles updating states for testing
-  */
-  const updateInputStates = (productId, quantity, warehouseFrom, warehouseTo) => {
-    productChange(productId);
-    quantityChange(quantity);
-    warehouseFromChange(warehouseFrom);
-    warehouseToChange(warehouseTo);
-  }
-  const updatePreviousWarehouseStates = (prevToVal, prevFromVal) => {
-    warehouseToPrevChange(prevToVal);
-    warehouseFromPrevChange(prevFromVal);
-  }
-
   //Test 9
   /*
   * Ensures that the warehouse sending the transfer sent the user provided value
@@ -195,6 +172,39 @@ const TransferMenu = ({truckAnimation}) => {
     }
   }
 
+
+  useEffect(() => {
+    if (productValue !== "" || quantityValue !== "" || warehouseFromValue !== "" || warehouseToValue !== "") {
+      productInputTest();
+      quantityInputTest();
+      warehouseFromInputTest();
+      warehouseToInputTest();
+    }
+  }, [productValue, quantityValue, warehouseFromValue, warehouseToValue]);
+
+  useEffect(() => {
+    if (warehouseFromPrev !== "" || warehouseToPrev !== "") {
+      previousFromValueStoredTest();
+      previousToValueStoredTest();
+      newFromValueStoredTest();
+      newToValueStoredTest();
+    }
+  }, [warehouseFromPrev, warehouseToPrev]);
+
+  /*
+  * Handles updating states for testing
+  */
+  const updateInputStates = (productId, quantity, warehouseFrom, warehouseTo) => {
+    productChange(productId);
+    quantityChange(quantity);
+    warehouseFromChange(warehouseFrom);
+    warehouseToChange(warehouseTo);
+  }
+  const updatePreviousWarehouseStates = (prevToVal, prevFromVal) => {
+    warehouseToPrevChange(prevToVal);
+    warehouseFromPrevChange(prevFromVal);
+  }
+  
 
 
 // Your web app's Firebase configuration
@@ -290,7 +300,7 @@ const TransferMenu = ({truckAnimation}) => {
 
 
   async function getProductData (warehouseNumber, productId) {
-    await get(ref(database, `warehouse/` + warehouseNumber + `/products/` + productId)).then((snapshot) => {
+    await get(ref(database, `warehouse/` + warehouseNumber + `/products/` + productId + `/quantity`)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
       } else {
@@ -321,6 +331,8 @@ const TransferMenu = ({truckAnimation}) => {
     const prevToVal = getProductData(warehouseTo, productId);
     const prevFromVal = getProductData(warehouseFrom, productId);
     updatePreviousWarehouseStates(prevToVal, prevFromVal);
+    console.log("Prev To Quantity: " + prevToVal);
+    console.log("Prev From Quantity" + prevFromVal);
 
     //Get integer values (ADD CASE TO SET 0 IF... product isn't in warehouse)
     const prevToInt = parseInt(prevToVal);
@@ -331,6 +343,10 @@ const TransferMenu = ({truckAnimation}) => {
     const newToVal = (prevToInt + quantityInt).toString();
     //Subtract from From warehouse
     const newFromVal = (prevFromInt - quantityInt).toString();
+
+    console.log("New To Quantity: " + newToVal);
+    console.log("New From Quantity" + newFromVal);
+
     //Change state if db values changed
     warehouseFromNewChange(warehouseFrom);
     warehouseToNewChange(warehouseTo);
