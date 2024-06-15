@@ -109,6 +109,9 @@ button:focus-visible {
 }
 .loader-truck {
   width: 10%;
+  position: relative;
+  right: 5rem;
+  top: 1rem;
 }
 .loader-warehouse-left {
   width: 30%;
@@ -156,14 +159,14 @@ button:focus-visible {
 
 /* Managements styling */
 .management {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 215px;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   color: #933e3e;
 }
 .DataTableCell {
-  width: 140px;
+  width: 110px;
   color: #933e3e;
 }
 .headerCell {
@@ -172,7 +175,9 @@ button:focus-visible {
 }
 button {
   background-color: #964646;
+  font: 0.95rem Arial;
 }
+
 .add{
   background-color: #f0e9ca;
   position:absolute;
