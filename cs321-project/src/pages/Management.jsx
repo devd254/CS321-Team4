@@ -4,9 +4,11 @@ import 'carbon-components/css/carbon-components.min.css';
 
 //sample items
 const initialItems = [
-  { id: '1', name: 'Item 1', warehouse: '101', quantity: 10 },
-  { id: '2', name: 'Item 2', warehouse: '102', quantity: 20 },
-  { id: '3', name: 'Item 3', warehouse: '103', quantity: 15 },
+  { id: '1', name: 'Item 1', warehouse: '101', quantity: 10, price: '$10'},
+  { id: '2', name: 'Item 2', warehouse: '102', quantity: 20, price: '$20'},
+  { id: '3', name: 'Item 3', warehouse: '103', quantity: 15, price: '$15'},
+  { id: '4', name: 'Item 4', warehouse: '104', quantity: 25, price: '$25'},
+  { id: '5', name: 'Item 5', warehouse: '105', quantity: 30, price: '$30'}
 ];
 
 const Management = () => {
@@ -37,15 +39,15 @@ const Management = () => {
   };
 
   return (
-    <div style={{ position: 'absolute', top: '20px', left: '215px', fontSize: '1.2rem' }}>
+    <div class="management">
       <DataTable
         rows={filteredItems}
         headers={[
-          { header: 'Item Number', key: 'id' },
-          { header: 'Item Name', key: 'name' },
+          { header: 'Product ID', key: 'id' },
+          { header: 'Product Name', key: 'name' },
           { header: 'Warehouse', key: 'warehouse' },
           { header: 'Quantity', key: 'quantity' },
-          { header: 'Actions', key: 'actions' }, // Add a column for actions
+          { header: 'Price', key: 'price' },
         ]}
         render={({ rows, headers, getRowProps }) => (
           <TableContainer title="Management">
@@ -56,7 +58,7 @@ const Management = () => {
               <thead>
                 <tr>
                   {headers.map((header) => (
-                    <th key={header.key}>{header.header}</th>
+                    <th key={header.key} className="headerCell">{header.header}</th>
                   ))}
                 </tr>
               </thead>
@@ -64,12 +66,12 @@ const Management = () => {
                 {rows.map((row) => (
                   <tr {...getRowProps({ row })} key={row.id}>
                     {row.cells.map((cell) => (
-                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                      <TableCell key={cell.id} className='DataTableCell'>{cell.value}</TableCell>
                     ))}
                     <TableCell>
-                      <Button onClick={() => handleUpdate(row.id)}>Update</Button>
-                      <Button onClick={() => handleRestock(row.id)}>Restock</Button>
-                      <Button onClick={() => handleRemove(row.id)}>Remove</Button>
+                      <Button onClick={() => handleUpdate(row.id)} className="myButton">Update</Button>
+                      <Button onClick={() => handleRestock(row.id)} className="myButton">Restock</Button>
+                      <Button onClick={() => handleRemove(row.id)} className="myButton">Remove</Button>
                     </TableCell>
                   </tr>
                 ))}
