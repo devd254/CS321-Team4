@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Search } from '@carbon/react';
-import {
+import { DataTable } from 'carbon-components-react';
+const {
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  TableHeader,
+} = DataTable;
+
+/*import {
   DataTable,
   Table,
   TableHead,
@@ -8,37 +19,39 @@ import {
   TableHeader,
   TableBody,
   TableCell,
-} from '@carbon/react';
+} from '@carbon/react';*/
+
 
 const rows = [
   {
     id: 'a',
-    orderNum: '001',
+    orderID: '001',
     action: 'Add'
   },
   {
     id: 'b',
-    orderNum: '002',
+    orderID: '002',
     action: 'Update'
   },
   {
     id: 'c',
-    orderNum: '003',
+    orderID: '003',
     action: 'Transfer'
   },
-];
-
-const headers = [
+ ];
+ 
+ 
+ const headers = [
   {
-    key: 'orderNum',
-    header: 'Order #',
+    key: 'orderID',
+    header: '          Order ID',
   },
   {
     key: 'action',
-    header: 'Action',
+    header: '         Action',
   },
-  
-];
+  ];
+ 
 
 const SearchBar = () => {
   return (
@@ -61,56 +74,77 @@ const SearchBar = () => {
 
 
 const ActivityTable = () => {
+  const rowStyle = {
+    height: '50px' // Adjust the height to make rows wider
+  };
+
   return (
-    <DataTable rows={rows} headers={headers}>
-  {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
-    <Table {...getTableProps()}>
-      <TableHead>
-        <TableRow>
-          {headers.map((header) => (
-            <TableHeader {...getHeaderProps({ header })}>
-              {header.header}
-            </TableHeader>
-          ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map((row) => (
-          <TableRow {...getRowProps({ row })}>
-            {row.cells.map((cell) => (
-              <TableCell key={cell.id}>{cell.value}</TableCell>
-            ))}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  )}
-</DataTable>
+    
+    <DataTable 
+      rows={rows}
+      headers={headers}
+      render={({ rows, headers, getHeaderProps }) => (
+        <div className='table-container'>
+        <TableContainer title="Latest Activity" >
+          <Table className='table' >
+            <TableHead>
+              <TableRow>
+                {headers.map(header => (
+                  <TableHeader {...getHeaderProps({ header })}
+                    >
+                    {header.header}
+                  </TableHeader>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map(row => (
+                <TableRow key={row.id} style={rowStyle}>
+                  {row.cells.map(cell => (
+                    <TableCell key={cell.id} > {cell.value}</TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        </div>
+      )}
+    />
+   
   );
 }
 
 
 const Dashboard = () => {
+
+  
+
   return (
     <div style={{ paddingTop: '0px' }}>
       <SearchBar />
       <div className="info-boxes">
         <div className="info-box">
-          <h2>Total Stock Value</h2>
-          <p>$10,000</p>
+          <strong>Stock Value</strong>
+          <div className = "bottom-text">
+          $25000
+          </div>
         </div>
         <div className="info-box">
-          <h2>Total Stock Quantity</h2>
-          <p>150 units</p>
+          <strong>Stock Quantity</strong>
+          <div className = "bottom-text">
+          3500 units
+          </div>
         </div>
         <div className="info-box">
-          <h2>Total Profit</h2>
-          <p>$5,000</p>
+          <strong>Gross Profit</strong>
+          <div className = "bottom-text">
+          $15000
+          </div>
         </div>
       </div>
-      <h2>Latest Activity</h2>
       <div className="activity-table">
-        <ActivityTable />
+      <ActivityTable />
       </div>
     </div>
   );
