@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { 
   TextInput,
   Select,
@@ -6,7 +6,6 @@ import {
   Button,
   Form,
 } from 'carbon-components-react'
-import { useState } from 'react';
 
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get } from "firebase/database";
@@ -135,6 +134,30 @@ const TransferMenu = ({truckAnimation}) => {
       console.log("Test 8 passed!");
     }
   }
+
+  useEffect(() => {
+    if (productValue !== "" || quantityValue !== "" || warehouseFromValue !== "" || warehouseToValue !== "") {
+      productInputTest();
+      quantityInputTest();
+      warehouseFromInputTest();
+      warehouseToInputTest();
+    }
+  }, [productValue, quantityValue, warehouseFromValue, warehouseToValue]);
+
+  /*
+  * Handles updating states for testing
+  */
+  const updateInputStates = (productId, quantity, warehouseFrom, warehouseTo) => {
+    productChange(productId);
+    quantityChange(quantity);
+    warehouseFromChange(warehouseFrom);
+    warehouseToChange(warehouseTo);
+  }
+  const updatePreviousWarehouseStates = (prevToVal, prevFromVal) => {
+    warehouseToPrevChange(prevToVal);
+    warehouseFromPrevChange(prevFromVal);
+  }
+
   //Test 9
   /*
   * Ensures that the warehouse sending the transfer sent the user provided value
@@ -192,25 +215,66 @@ const TransferMenu = ({truckAnimation}) => {
   const database = getDatabase(app);
 
 
-  async function sendData (warehouseNumber, productId, price, quantity, size, brand, type, description) {
-    try{
-      console.log("Initilization and database received");
-      
-      set(ref(database, 'warehouse/' + warehouseNumber), {
-        productId: productId,
-        price: price,
-        quantity: quantity,
-        size: size,
-        brand: brand,
-        type: type,
-        description: description,
-      });
-      console.log("Data sent");
-    }
-    catch(error){
-      console.log(error);
+  async function sendData (warehouseNumber, productId, name, price, quantity, size, brand, type, description) {
+    try {
+        console.log("Initialization and database received");
+
+        set(ref(database, 'warehouse/' + warehouseNumber + '/products/' + productId), {
+            productId: productId,
+            name: name,
+            price: price,
+            quantity: quantity,
+            size: size,
+            brand: brand,
+            type: type,
+            description: description,
+        });
+        console.log("Data sent");
+    } catch (error) {
+        console.log(error);
     }
   }
+
+  // Function to create multiple products for each warehouse
+  async function createProductsForWarehouses() {
+    const products = [
+      // Warehouse 1 products
+      { warehouseNumber: "1", productId: "1", name: "Levi's Jeans", price: "18", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
+      { warehouseNumber: "1", productId: "2", name: "Samsung TV", price: "25", quantity: "35", size: "large", brand: "Samsung", type: "Electronics", description: "This television offers 4K resolution" },
+      { warehouseNumber: "1", productId: "3", name: "Dell Monitor", price: "33", quantity: "50", size: "extra large", brand: "Dell", type: "Computers", description: "This monitor provides excellent color accuracy" },
+      { warehouseNumber: "1", productId: "4", name: "Sony Headphones", price: "45", quantity: "25", size: "small", brand: "Sony", type: "Audio", description: "These headphones deliver high-fidelity sound" },
+      { warehouseNumber: "1", productId: "5", name: "Nike Running Shoes", price: "55", quantity: "40", size: "medium", brand: "Nike", type: "Footwear", description: "These running shoes are lightweight and comfortable" },
+      
+      // Warehouse 2 products (some shared with Warehouse 1)
+      { warehouseNumber: "2", productId: "1", name: "Levi's Jeans", price: "12", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
+      { warehouseNumber: "2", productId: "6", name: "Adidas Jacket", price: "20", quantity: "60", size: "large", brand: "Adidas", type: "Clothing", description: "This jacket is perfect for cold weather" },
+      { warehouseNumber: "2", productId: "7", name: "Apple iPad", price: "30", quantity: "45", size: "extra large", brand: "Apple", type: "Technology", description: "This iPad is great for both work and play" },
+      { warehouseNumber: "2", productId: "8", name: "Lego Set", price: "40", quantity: "30", size: "small", brand: "Lego", type: "Toys", description: "This Lego set is fun for all ages" },
+      { warehouseNumber: "2", productId: "9", name: "Sony Headphones", price: "39", quantity: "25", size: "small", brand: "Sony", type: "Audio", description: "These headphones deliver high-fidelity sound" },
+      
+      // Warehouse 3 products (some shared with Warehouses 1 and 2)
+      { warehouseNumber: "3", productId: "1", name: "Levi's Jeans", price: "9", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
+      { warehouseNumber: "3", productId: "3", name: "Dell Monitor", price: "35", quantity: "50", size: "extra large", brand: "Dell", type: "Computers", description: "This monitor provides excellent color accuracy" },
+      { warehouseNumber: "3", productId: "10", name: "Nestle Cookies", price: "25", quantity: "90", size: "extra large", brand: "Nestle", type: "Food", description: "These cookies are made with high-quality ingredients" },
+      { warehouseNumber: "3", productId: "11", name: "Puma Sports Shoes", price: "35", quantity: "70", size: "small", brand: "Puma", type: "Footwear", description: "These sports shoes are designed for performance" },
+      { warehouseNumber: "3", productId: "12", name: "Bosch Toolkit", price: "45", quantity: "50", size: "medium", brand: "Bosch", type: "Tools", description: "This toolkit is ideal for home use" },
+    ];
+
+    for (const product of products) {
+        await sendData(
+            product.warehouseNumber,
+            product.productId,
+            product.name,
+            product.price,
+            product.quantity,
+            product.size,
+            product.brand,
+            product.type,
+            product.description
+        );
+    }
+  }
+
 
   async function getAllWarehouseData () {
     get(ref(database, `warehouse`)).then((snapshot) => {
@@ -224,81 +288,71 @@ const TransferMenu = ({truckAnimation}) => {
     });
   }
 
+
+  async function getProductData (warehouseNumber, productId) {
+    await get(ref(database, `warehouse/` + warehouseNumber + `/products/` + productId)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
   const transfer = (e) => {
     e.preventDefault();
-    console.log("Do db stuff");
-    // sendData("2", "5", "20", "15", "medium", "Nike", "Sporting Goods", "This shoe is designed for high performance");
-    // sendData("3", "8", "30", "50", "large", "Adidas", "Clothing", "These pants are made from organic cotton");
-    // sendData("4", "12", "40", "25", "extra large", "Sony", "Electronics", "This is the latest model of the Sony headphones");
-    // sendData("5", "20", "50", "10", "small", "Samsung", "Appliances", "This microwave oven has a modern design");
-    // sendData("6", "25", "60", "5", "medium", "Apple", "Technology", "This iPhone features the latest innovations");
-    // sendData("7", "30", "70", "40", "large", "Lego", "Toys", "This Lego set includes various unique pieces");
-    // sendData("8", "35", "80", "20", "extra large", "Honda", "Automotive", "This is the latest model of the Honda Civic");
-    // sendData("9", "40", "90", "35", "small", "Coca-Cola", "Beverages", "This is a limited edition Coca-Cola bottle");
-    // sendData("10", "45", "100", "60", "medium", "Nestle", "Food", "This chocolate bar is made with premium ingredients");
-    // sendData("11", "50", "110", "70", "large", "Puma", "Footwear", "These sneakers are designed for comfort and style");
-    // sendData("12", "55", "120", "80", "extra large", "Bosch", "Tools", "This drill is perfect for professional use");
-    // sendData("13", "60", "130", "90", "small", "HP", "Computers", "This laptop is equipped with the latest technology");
-    // sendData("14", "65", "140", "100", "medium", "Dell", "Computers", "This desktop computer offers great performance");
-    // sendData("15", "70", "150", "110", "large", "Canon", "Cameras", "This camera features high resolution and durability");
-    // sendData("16", "75", "160", "120", "extra large", "Sony", "Gaming", "This PlayStation offers an immersive gaming experience");
-    // sendData("17", "80", "170", "130", "small", "Samsung", "Mobile Phones", "This smartphone has a sleek design and powerful features");
-    // sendData("18", "85", "180", "140", "medium", "LG", "Home Appliances", "This refrigerator is energy efficient and spacious");
-    // sendData("19", "90", "190", "150", "large", "Bose", "Audio", "These speakers provide high-quality sound");
-    // sendData("20", "95", "200", "160", "extra large", "Dyson", "Home Appliances", "This vacuum cleaner is highly effective and easy to use");
-
-    getAllWarehouseData();
-    //Connect to database and store previous values
-    const prevToVal = "";
-    const prevFromVal = "";
-    warehouseToPrevChange(prevToVal);
-    warehouseFromPrevChange(prevFromVal);
-
+    // createProductsForWarehouses();
     // Create a FormData object from the form element
     const formData = new FormData(e.target);
-  
+    
     // Retrieve the data from the TextInput fields using their IDs
     const warehouseFrom = formData.get('w-from');
     const warehouseTo = formData.get('w-to');
     const productId = formData.get('id');
     const quantity = formData.get('q');
+    updateInputStates(productId, quantity, warehouseFrom, warehouseTo);
 
-    //Change state if prodId and quantity changed
-    productChange(productId);
-    quantityChange(quantity);
-    warehouseFromChange(warehouseFrom);
-    warehouseToChange(warehouseTo);
-  
-    console.log(`Product ID: ${productId}`);
-    console.log(`Quantity: ${quantity}`);
+    // createProductsForWarehouses();
+    // getAllWarehouseData();
 
-    //Subtract from From warehouse
+    //Connect to database and store previous values
+    const prevToVal = getProductData(warehouseTo, productId);
+    const prevFromVal = getProductData(warehouseFrom, productId);
+    updatePreviousWarehouseStates(prevToVal, prevFromVal);
+
+    //Get integer values (ADD CASE TO SET 0 IF... product isn't in warehouse)
+    const prevToInt = parseInt(prevToVal);
+    const prevFromInt = parseInt(prevFromVal);
+    const quantityInt = parseInt(quantity);
 
     //Add to To warehouse
-    
+    const newToVal = (prevToInt + quantityInt).toString();
+    //Subtract from From warehouse
+    const newFromVal = (prevFromInt - quantityInt).toString();
     //Change state if db values changed
     warehouseFromNewChange(warehouseFrom);
     warehouseToNewChange(warehouseTo);
 
     //Make the truck deliver animation (GUI)
-    console.log("Truck deliver");
     truckAnimation();
   };
 
   return (
     <div className="menu-container">
       <Form onSubmit={transfer} >
-          <Select id="w-from" defaultValue="placeholder-item" labelText="From">
+          <Select id="w-from" name="w-from" defaultValue="placeholder-item" labelText="From">
             <SelectItem disabled hidden value="placeholder-item" text="Choose a warehouse" />
-            <SelectItem value="option-1" text="Warehouse 1" />
-            <SelectItem value="option-2" text="Warehouse 2" />
-            <SelectItem value="option-3" text="Warehouse 3" />
+            <SelectItem value="1" text="Warehouse 1" />
+            <SelectItem value="2" text="Warehouse 2" />
+            <SelectItem value="3" text="Warehouse 3" />
           </Select>
-          <Select id="w-to" defaultValue="placeholder-item" labelText="To">
+          <Select id="w-to" name="w-to" defaultValue="placeholder-item" labelText="To">
             <SelectItem disabled hidden value="placeholder-item" text="Choose a warehouse" />
-            <SelectItem value="option-1" text="Warehouse 1" />
-            <SelectItem value="option-2" text="Warehouse 2" />
-            <SelectItem value="option-3" text="Warehouse 3" />
+            <SelectItem value="1" text="Warehouse 1" />
+            <SelectItem value="2" text="Warehouse 2" />
+            <SelectItem value="3" text="Warehouse 3" />
           </Select>
           <TextInput id="id" name="id" labelText="Product ID"/>
           <TextInput id="q" name="q" labelText="Quantity"/>
