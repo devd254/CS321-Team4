@@ -239,21 +239,21 @@ const TransferMenu = ({truckAnimation}) => {
   async function createProductsForWarehouses() {
     const products = [
       // Warehouse 1 products
-      { warehouseNumber: "1", productId: "1", name: "Levi's Jeans", price: "15", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
+      { warehouseNumber: "1", productId: "1", name: "Levi's Jeans", price: "18", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
       { warehouseNumber: "1", productId: "2", name: "Samsung TV", price: "25", quantity: "35", size: "large", brand: "Samsung", type: "Electronics", description: "This television offers 4K resolution" },
-      { warehouseNumber: "1", productId: "3", name: "Dell Monitor", price: "35", quantity: "50", size: "extra large", brand: "Dell", type: "Computers", description: "This monitor provides excellent color accuracy" },
+      { warehouseNumber: "1", productId: "3", name: "Dell Monitor", price: "33", quantity: "50", size: "extra large", brand: "Dell", type: "Computers", description: "This monitor provides excellent color accuracy" },
       { warehouseNumber: "1", productId: "4", name: "Sony Headphones", price: "45", quantity: "25", size: "small", brand: "Sony", type: "Audio", description: "These headphones deliver high-fidelity sound" },
       { warehouseNumber: "1", productId: "5", name: "Nike Running Shoes", price: "55", quantity: "40", size: "medium", brand: "Nike", type: "Footwear", description: "These running shoes are lightweight and comfortable" },
       
       // Warehouse 2 products (some shared with Warehouse 1)
-      { warehouseNumber: "2", productId: "1", name: "Levi's Jeans", price: "15", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
+      { warehouseNumber: "2", productId: "1", name: "Levi's Jeans", price: "12", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
       { warehouseNumber: "2", productId: "6", name: "Adidas Jacket", price: "20", quantity: "60", size: "large", brand: "Adidas", type: "Clothing", description: "This jacket is perfect for cold weather" },
       { warehouseNumber: "2", productId: "7", name: "Apple iPad", price: "30", quantity: "45", size: "extra large", brand: "Apple", type: "Technology", description: "This iPad is great for both work and play" },
       { warehouseNumber: "2", productId: "8", name: "Lego Set", price: "40", quantity: "30", size: "small", brand: "Lego", type: "Toys", description: "This Lego set is fun for all ages" },
-      { warehouseNumber: "2", productId: "9", name: "Sony Headphones", price: "45", quantity: "25", size: "small", brand: "Sony", type: "Audio", description: "These headphones deliver high-fidelity sound" },
+      { warehouseNumber: "2", productId: "9", name: "Sony Headphones", price: "39", quantity: "25", size: "small", brand: "Sony", type: "Audio", description: "These headphones deliver high-fidelity sound" },
       
       // Warehouse 3 products (some shared with Warehouses 1 and 2)
-      { warehouseNumber: "3", productId: "1", name: "Levi's Jeans", price: "15", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
+      { warehouseNumber: "3", productId: "1", name: "Levi's Jeans", price: "9", quantity: "20", size: "medium", brand: "Levi's", type: "Clothing", description: "These jeans are durable and stylish" },
       { warehouseNumber: "3", productId: "3", name: "Dell Monitor", price: "35", quantity: "50", size: "extra large", brand: "Dell", type: "Computers", description: "This monitor provides excellent color accuracy" },
       { warehouseNumber: "3", productId: "10", name: "Nestle Cookies", price: "25", quantity: "90", size: "extra large", brand: "Nestle", type: "Food", description: "These cookies are made with high-quality ingredients" },
       { warehouseNumber: "3", productId: "11", name: "Puma Sports Shoes", price: "35", quantity: "70", size: "small", brand: "Puma", type: "Footwear", description: "These sports shoes are designed for performance" },
