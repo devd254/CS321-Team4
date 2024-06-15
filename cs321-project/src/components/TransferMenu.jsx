@@ -303,20 +303,23 @@ const TransferMenu = ({truckAnimation}) => {
     await get(ref(database, `warehouse/` + warehouseNumber + `/products/` + productId + `/quantity`)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
+        return snapshot.val();
       } else {
         console.log("No data available");
+        return "0";
       }
     }).catch((error) => {
-      console.error(error);
+      console.error(`Error from getting product data ${error}`);
+      return error;
     });
   }
 
-  const transfer = (e) => {
+  const transfer = async (e) => {
     e.preventDefault();
     // createProductsForWarehouses();
     // Create a FormData object from the form element
     const formData = new FormData(e.target);
-    
+    // createProductsForWarehouses();
     // Retrieve the data from the TextInput fields using their IDs
     const warehouseFrom = formData.get('w-from');
     const warehouseTo = formData.get('w-to');
@@ -328,31 +331,36 @@ const TransferMenu = ({truckAnimation}) => {
     // getAllWarehouseData();
 
     //Connect to database and store previous values
-    const prevToVal = getProductData(warehouseTo, productId);
-    const prevFromVal = getProductData(warehouseFrom, productId);
-    updatePreviousWarehouseStates(prevToVal, prevFromVal);
-    console.log("Prev To Quantity: " + prevToVal);
-    console.log("Prev From Quantity" + prevFromVal);
-
-    //Get integer values (ADD CASE TO SET 0 IF... product isn't in warehouse)
-    const prevToInt = parseInt(prevToVal);
-    const prevFromInt = parseInt(prevFromVal);
-    const quantityInt = parseInt(quantity);
-
-    //Add to To warehouse
-    const newToVal = (prevToInt + quantityInt).toString();
-    //Subtract from From warehouse
-    const newFromVal = (prevFromInt - quantityInt).toString();
-
-    console.log("New To Quantity: " + newToVal);
-    console.log("New From Quantity" + newFromVal);
-
-    //Change state if db values changed
-    warehouseFromNewChange(warehouseFrom);
-    warehouseToNewChange(warehouseTo);
-
-    //Make the truck deliver animation (GUI)
-    truckAnimation();
+    try{
+      const prevToVal = await getProductData(warehouseTo, productId);
+      const prevFromVal = await getProductData(warehouseFrom, productId);
+      // updatePreviousWarehouseStates(prevToVal, prevFromVal);
+      console.log("Prev To Quantity: " + prevToVal);
+      console.log("Prev From Quantity" + prevFromVal);
+  
+      //Get integer values (ADD CASE TO SET 0 IF... product isn't in warehouse)
+      const prevToInt = parseInt(prevToVal);
+      const prevFromInt = parseInt(prevFromVal);
+      const quantityInt = parseInt(quantity);
+  
+      //Add to To warehouse
+      const newToVal = (prevToInt + quantityInt).toString();
+      //Subtract from From warehouse
+      const newFromVal = (prevFromInt - quantityInt).toString();
+  
+      console.log("New To Quantity: " + newToVal);
+      console.log("New From Quantity" + newFromVal);
+  
+      //Change state if db values changed
+      warehouseFromNewChange(warehouseFrom);
+      warehouseToNewChange(warehouseTo);
+  
+      //Make the truck deliver animation (GUI)
+      truckAnimation();
+    }
+    catch(error){
+      console.log("Error in transfer: ", error);
+    }
   };
 
   return (
