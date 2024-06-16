@@ -188,11 +188,9 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Type:</label>
           <div className = "type">
-          <Select id = "type-id" className = "type-box" noLabel onChange={handleTypeInput} >
-            <SelectItem value="Small" text="Small" />
-            <SelectItem value="Medium" text="Medium" />
-            <SelectItem value="Large" text="Large" />
-          </Select>
+          <TextArea id = "brand-id"  labelText={false}
+            rows={1} onChange={handleTypeInput}
+            />
             </div>
           </div>
         {/*Description Bar*/}
