@@ -7,7 +7,7 @@ import './../App.css';
 
 
 
-/*const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyDl5QW8q32mb73NIZ4bsdbvxWhTsOVsqAY",
   authDomain: "cs321-54da7.firebaseapp.com",
   projectId: "cs321-54da7",
@@ -15,7 +15,7 @@ import './../App.css';
   messagingSenderId: "962075931184",
   appId: "1:962075931184:web:2df37385a444bc7c5e73f5",
   measurementId: "G-6DF1PBCBTN",
-  databaseURL: "https://DATABASE_NAME.REGION.firebasedatabase.app"
+  databaseURL: "https://cs321-54da7-default-rtdb.firebaseio.com"
 };
 
 // Initialize Firebase
@@ -23,17 +23,14 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-/*
- More Documentation for database stuff here (MUST READ)
- https://firebase.google.com/docs/database/web/read-and-write?authuser=0&hl=en#web
-*/
-/*async function sendData (warehouseNumber, productId, price, quantity, size, brand, type, description) {
+
+async function sendData (warehouseNumber, productId, name, price, quantity, size, brand, type, description) {
   try{
     console.log("Initilization and database received");
    
-    set(ref(database, 'warehouse/' + warehouseNumber), {
-      warehouseNumber: warehouseNumber,
+    set(ref(database, 'warehouse/' + warehouseNumber + '/products/' + productId), {
       productId: productId,
+      name: name,
       price: price,
       quantity: quantity,
       size: size,
@@ -46,23 +43,26 @@ const database = getDatabase(app);
   catch(error){
     console.log(error);
   }
-}*/
 
-/*async function getData (warehouseNumber) {
-  const dbRef = ref(database);
-  get(ref(database, `warehouse/${warehouseNumber}`)).then((snapshot) => {
-  if (snapshot.exists()) {
-    console.log(snapshot.val());
-  } else {
-    console.log("No data available");
+}
+async function sendDataWarehouse (warehouseNumber, productID) {
+  try{
+    console.log("Initilization and database received");
+   
+    set(ref(database, 'warehouse/' + warehouseNumber + '/products/' + productId), {
+      productID: productID
+    });
+    console.log("Data sent");
   }
-  }).catch((error) => {
-  console.error(error);
-  });
-}*/
+  catch(error){
+    console.log(error);
+  }
+
+}
 
 const Add = () => {
-  const [name, setName] = useState(''); 
+  const [id, setID] = useState(''); 
+  const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [count, setCount] = useState('');
   const [wareHouse, setWareHouse] = useState('');
@@ -70,21 +70,20 @@ const Add = () => {
   const [brandName, setBrandName] = useState('');
   const [type, setType] = useState('');
   const [description, setDescription] = useState('');
+  const [newWarehouse, setNewWarehouse] = useState('');
+
   const handleTextInput = (e) =>{
     let replace =(e.target.value).replace(/\d/, '');
-    setName(replace);
-    console.log('ID:', replace);
+    setID(replace);
   }
   const handlePriceInput = (e) =>{
     let replace =(e.target.value).replace(/\d/, '');
     setPrice(replace);
-    console.log('ID:', replace);
 
   }
   const handleQuantityInput = (e) => {
     let replace =(e.target.value).replace(/\d/, '');
     setCount(replace);
-    console.log('ID:', replace);
   }
   const handleWareHouseInput = (e) =>{
     setWareHouse(e.target.value);
@@ -104,9 +103,23 @@ const Add = () => {
   }
 
   const handleAdd = () => {
-    sendData(wareHouse, name, price, count, size, brandName, type, description);
+    sendData(wareHouse, id, name, price, count, size, brandName, type, description);
   }
 
+  const handleNewWareHouseInput = (e) => {
+    let replace =(e.target.value).replace(/\d/, '');
+    setName(replace);
+    setNewWarehouse(replace);
+  }
+
+  const handleWareHouseAdd = () =>{
+    sendDataWarehouse(newWarehouse, id);
+  }
+
+  const handleProductNameInput = (e) =>{
+    setName(e.target.value);
+  }
+  
   return (
     <>
     <div className = "add">
@@ -116,7 +129,7 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">ID:</label>
           <div className = "text-input">
-            <NumberInput
+            <NumberInput id = "product-id"
               min={0} invalidText="Number is not valid" hideSteppers = {true} onChange={handleTextInput}
             />
           </div>
@@ -126,7 +139,7 @@ const Add = () => {
           <label htmlFor="product-name" className="input-label">Price:</label>
           <div className = "number-input">
             <span className="dollar">$</span>
-            <NumberInput
+            <NumberInput 
               id="carbon-number" min={0} invalidText="Number is not valid" hideSteppers = {true} step={0.01} onChange={handlePriceInput}
             />
           </div>
@@ -135,7 +148,7 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Quantity:</label>
           <div className = "count-input">
-            <NumberInput
+            <NumberInput id = "quantity-id"
               min={0} invalidText="Number is not valid" hideSteppers = {true}  onChange={handleQuantityInput}
             />
             </div>
@@ -144,11 +157,10 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Warehouse #:</label>
           <div className = "location">
-          <Select className = "location-box" noLabel onChange={handleWareHouseInput}>
-            <SelectItem disabled text="Select an option to add the Product" />
-            <SelectItem value="option-1" text="Option 1" />
-            <SelectItem value="option-2" text="Option 2" />
-            <SelectItem value="option-3" text="Option 3" />
+          <Select id = "warehouse-id" className = "location-box" noLabel onChange={handleWareHouseInput}>
+            <SelectItem value="1" text="Option 1" />
+            <SelectItem value="2" text="Option 2" />
+            <SelectItem value="3" text="Option 3" />
           </Select>
             </div>
           </div>
@@ -156,8 +168,7 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Size:</label>
           <div className = "size">
-          <Select className = "size-box" noLabel onChange={handleSizeInput}>
-            <SelectItem disabled text="Select an option to add the Size...../" />
+          <Select id = "size-id" className = "size-box" noLabel onChange={handleSizeInput}>
             <SelectItem value="option-1" text="Small" />
             <SelectItem value="option-2" text="Medium" />
             <SelectItem value="option-3" text="Large" />
@@ -168,7 +179,7 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Brand:</label>
           <div className = "brand-name" >
-            <TextArea
+            <TextArea id = "brand-id"  labelText={false}
             rows={1} onChange={handleBrandNameInput}
             />
           </div>
@@ -177,8 +188,7 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Type:</label>
           <div className = "type">
-          <Select className = "type-box" noLabel onChange={handleTypeInput} >
-            <SelectItem disabled text="Select an option to add the Type...../" />
+          <Select id = "type-id" className = "type-box" noLabel onChange={handleTypeInput} >
             <SelectItem value="Small" text="Small" />
             <SelectItem value="Medium" text="Medium" />
             <SelectItem value="Large" text="Large" />
@@ -189,7 +199,7 @@ const Add = () => {
         <div className = "input">
           <label htmlFor="product-name" className="input-label">Desc:</label>
           <div className = "description">
-            <TextArea
+            <TextArea id = "desc-id" className = "desc-box" labelText={false}
             rows={1} onChange={handleDescriptionInput}
             />
           </div>
@@ -206,14 +216,14 @@ const Add = () => {
       </div>
       <div className='warehouse-location'>
         <div className='text_2'>
-        <h1 className='text2'>Add New Warehouse Location</h1>
+        <h1 className='text2'>Add New Warehouse</h1>
         <div className= 'warehouse-loc'>
-          <TextArea
-          rows={1} 
-          placeholder='Enter warehouse location...' />
+          <NumberInput id = "product-id"
+            min={0} invalidText="Number is not valid" hideSteppers = {true} onChange={handleNewWareHouseInput} labelText="wareHouse-location" placeholder='Enter warehouse location...'
+          />
         </div>
         <div className='warehouse-button'>
-          <Button onClick={true}>
+          <Button onClick={handleWareHouseAdd}>
             ADD LOCATION
           </Button>
         </div>
@@ -221,16 +231,11 @@ const Add = () => {
       </div>
       <div className='type'>
         <div className='type-option'>
-        <h1 className='type-option-style'>Create New Product Type</h1>
+        <h1 className='type-option-style'>Create New Product Name</h1>
         <div className= 'warehouse-loc'>
           <TextArea
           rows={1} 
-          placeholder='Enter type of product to be created...' />
-        </div>
-        <div className='warehouse-button'>
-          <Button onClick={true}>
-            ADD TYPE
-          </Button>
+          placeholder='Enter name of product to be stored...' onChange={handleProductNameInput}/>
         </div>
       </div>
       </div>
@@ -239,3 +244,5 @@ const Add = () => {
   )
 }
 export default Add
+
+
