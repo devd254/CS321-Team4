@@ -14,7 +14,9 @@ const {
   TableHeader,
 } = DataTable;
 
+const rows0 = [
 
+]
 const rows1 = [
   {
     id: '1',
@@ -247,9 +249,13 @@ const Dashboard = () => {
       setDisplayedRows(rows2);
       setProfit(22348.47)
     }
-    else {
+    else if (searchValue == '1') {
       setDisplayedRows(rows1);
       setProfit(14926.01)
+    }
+    else {
+      setDisplayedRows(rows0);
+      setProfit(0);
     }
   }, [searchValue]);
 
