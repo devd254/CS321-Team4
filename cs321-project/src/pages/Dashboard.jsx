@@ -233,7 +233,7 @@ const database = getDatabase(app);
 
 const Dashboard = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [displayedRows, setDisplayedRows] = useState(rows1);
+  const [displayedRows, setDisplayedRows] = useState(rows0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [stockValue, setStockValue] = useState(0);
   const [profit, setProfit] = useState(0);
