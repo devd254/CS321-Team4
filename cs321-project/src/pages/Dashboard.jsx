@@ -133,8 +133,6 @@ const rows1 = [
  ]
 
 
- 
- 
  const headers = [
   {
     key: 'orderID',
@@ -234,15 +232,56 @@ const database = getDatabase(app);
 const Dashboard = () => {
   const [searchValue, setSearchValue] = useState('');
   const [displayedRows, setDisplayedRows] = useState(rows1);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [stockValue, setStockValue] = useState(0);
+  const [profit, setProfit] = useState(0);
 
   useEffect(() => {
-    if (searchValue === '3') {
+    if (!searchValue) {
+      return;
+    }
+    else if (searchValue === '3') {
       setDisplayedRows(rows3);
+      setProfit(15125.25)
     } else if (searchValue == '2') {
       setDisplayedRows(rows2);
+      setProfit(22348.47)
     }
     else {
       setDisplayedRows(rows1);
+      setProfit(14926.01)
+    }
+  }, [searchValue]);
+
+  /*database stuff*/
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await get(ref(database, `warehouse/${searchValue}/products`));
+        if (snapshot.exists()) {
+          const products = snapshot.val();
+          let total = 0;
+          let value = 0;
+          for (const productId in products) {
+            total += parseFloat(products[productId].quantity);
+            value += parseFloat(products[productId].price);
+          }
+          setTotalQuantity(total);
+          setStockValue(value);
+        } else {
+          setTotalQuantity(0);
+          setStockValue(0);
+        }
+      } catch (error) {
+        console.error(error);
+        setTotalQuantity(0);
+        setStockValue(0);
+      }
+    };
+
+    if (searchValue) {
+      fetchData();
     }
   }, [searchValue]);
 
@@ -252,20 +291,17 @@ const Dashboard = () => {
       <div className="info-boxes">
         <div className="info-box">
           <strong>Stock Value</strong>
-          <div className = "bottom-text">
-          $25000
+          <div className = "bottom-text"> ${stockValue.toFixed(2)}
           </div>
         </div>
         <div className="info-box">
           <strong>Stock Quantity</strong>
-          <div className = "bottom-text">
-          3500 units
+          <div className = "bottom-text"> {totalQuantity} units
           </div>
         </div>
         <div className="info-box">
           <strong>Gross Profit</strong>
-          <div className = "bottom-text">
-          $15000
+          <div className = "bottom-text"> ${profit}
           </div>
         </div>
       </div>
