@@ -49,7 +49,7 @@ async function sendDataWarehouse (warehouseNumber, productID) {
   try{
     console.log("Initilization and database received");
    
-    set(ref(database, 'warehouse/' + warehouseNumber + '/products/' + productId), {
+    set(ref(database, 'warehouse/' + warehouseNumber + '/products/' + productID), {
       productID: productID
     });
     console.log("Data sent");
