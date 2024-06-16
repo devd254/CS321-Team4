@@ -253,7 +253,6 @@ const Dashboard = () => {
     }
   }, [searchValue]);
 
-  /*database stuff*/
   
   useEffect(() => {
     const fetchData = async () => {
